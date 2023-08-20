@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="en">
-
 <head>
   <title>@yield('title')</title>
   <!-- Required meta tags -->
@@ -18,7 +17,7 @@
   <header class="header">
     <div class="header-left">
     <input class="input" type="type" placeholder="Search..." />
-         <button><i class="fas fa-search"></i></button> 
+        <button><i class="fas fa-search"></i></button> 
     </div> 
     <div class="header-right">
     <i class="fas fa-bell"></i>
@@ -42,8 +41,8 @@
  </aside>
  <!-- End Sidebar -->
  <!-- Main -->
- <main class="main-container">
- @yield('main-container')
+ <main>
+ @yield('main')
  </main>
  <!-- End Main -->
   </div>

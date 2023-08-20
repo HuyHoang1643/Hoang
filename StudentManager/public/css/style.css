@@ -6,9 +6,9 @@ body{
 }
 .grid-container{
     display: grid;
-    grid-template-columns: 260px 1fr 1fr 1fr;
-    grid-template-rows: 0,2fr 3fr;
-    grid-template-areas: "sidebar header header header" "sidebar main main main";
+    grid-template-columns: 300px 1fr;
+    grid-template-rows: 60px 1fr;
+    grid-template-areas: "sidebar header" "sidebar main";
     height:100vh;
 }
 .header{
@@ -47,10 +47,12 @@ margin-left: 5px;
     -webkit-transition: all 0.5s;
 }
 .sidebar-title{
+    margin: 20px;
+}
+.sidebar-title p{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    padding: 20px;
     font-size: 20px;
 }
 .sidebar-list{
@@ -70,8 +72,59 @@ ul.sidebar-list a{
     text-decoration: none;
     color: #9790ab;
 }
-.main-container{
-    grid-area: main;
-    overflow-y: auto;
-    padding: 20px 0 20px 0;
+.main{
+    min-height: 100%;
+    padding: 6rem 1rem 2rem 14rem;
+    color: #201f20;
 }
+.dashboard-container{
+    padding: 25px;
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr 0.5fr 0.5fr;
+    grid-template-rows: auto;
+    gap: 1rem;
+    grid-template-areas: "total1 total2 total3 total4 total4"
+    "detail detail detail detail detail";
+}
+.card{
+    border-radius: 10px;
+    background-color: white;
+    padding: 1rem;
+}
+.total1{
+    grid-area: total1;
+    background-color: aquamarine;
+    color: white;
+}
+.total2{
+    grid-area: total2;
+    background-color: rgb(175, 179, 49);
+    color: white;
+}
+.total3{
+    grid-area: total3;
+    background-color: rgb(255, 144, 127);
+    color: white;
+}
+.total4{
+    grid-area: total4;
+    background-color: rgb(127, 206, 255);
+    color: white;
+}
+.detail{
+ grid-area: detail;
+ color: black;
+}
+
+.info{
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.info-image{
+    font-size: 40px;
+    color:#21232d;
+}
+
+
