@@ -37,6 +37,7 @@
 <a href=""><li class="sidebar-list-item">Teacher management</li></a>
 <a href=""><li class="sidebar-list-item">Course management</li></a>
 <a href=""><li class="sidebar-list-item">Grade management</li></a>
+<a href=""><li class="sidebar-list-item">Department management</li></a>
  </ul>
  </aside>
  <!-- End Sidebar -->
