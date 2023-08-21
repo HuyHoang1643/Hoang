@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>New Teacher</title>
+  <title>Detail of {{$course->name}}</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -18,26 +18,12 @@
     <!-- place navbar here -->
   </header>
   <main>
-    <form action="/teachers" method="post">
-        @csrf
-        <div class="form-group">
-            <label for="image">Image</label>
-            <input class="form-control" type="file" placeholder="Input Image" name="image" id="image">
+    <div class="card">
+        <div class="card-body">
+            <p class="card-text">{{$teacher->id}}</p>
+            <p class="card-text">{{$teacher->name}}</p>
         </div>
-        <div class="form-group">
-            <label for="email">Name</label>
-            <input class="form-control" type="text" placeholder="Input Name" name="name" id="name">
-        </div>
-        <div class="form-group">
-            <label for="phonenumber">Phone</label>
-            <input class="form-control" type="text" placeholder="Input Phone" name="phonenumber" id="phonenumber">
-        </div>
-        <div class="form-group">
-            <label for="email">Emaail</label>
-            <input class="form-control" placeholder="Input Email" name="email" id="email" >
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+    </div>
   </main>
   <footer>
     <!-- place footer here -->

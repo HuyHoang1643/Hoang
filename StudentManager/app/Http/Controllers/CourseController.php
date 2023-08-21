@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
@@ -11,7 +12,8 @@ class CourseController extends Controller
      */
     public function index()
     {
-        //
+        $courses = Course::all();
+        return view('course.index', ['courses' => $courses]);
     }
 
     /**
@@ -19,7 +21,7 @@ class CourseController extends Controller
      */
     public function create()
     {
-        //
+        return view('courses.create');
     }
 
     /**
@@ -27,7 +29,13 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if (strlen($request->get('name'))==0)
+        return redirect('courses')->with('error', 'Name is required');
+        $course = new Course();
+        $course->name = $request->get('id');
+        $course->name = $request->get('name');
+        $course->save();
+        return redirect('courses')->with('success', 'successfully added');
     }
 
     /**
@@ -35,7 +43,8 @@ class CourseController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $course = Course::find($id);
+        return view('courses.show', ['course' => $course]);
     }
 
     /**
@@ -43,7 +52,9 @@ class CourseController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $course = Course::find($id);
+        return view('courses.edit', ['course' => $course]);
+
     }
 
     /**
@@ -51,7 +62,11 @@ class CourseController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $course = Course::find($id);
+        $course->id= $request->get('id');
+        $course->name = $request->get('name');
+        $course->save();
+        return redirect('courses');
     }
 
     /**
@@ -59,6 +74,8 @@ class CourseController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $course = Course::find($id);
+        $course->delete();
+        return redirect('courses');
     }
 }
