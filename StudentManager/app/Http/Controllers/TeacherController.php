@@ -11,7 +11,7 @@ class TeacherController extends Controller
     public function index()
     {
         $teachers = Teacher::all();
-        return view('teacher.index', ['teachers' => $teachers]);
+        return view('teachers.index', ['teachers' => $teachers]);
     }
 
     /**
@@ -28,9 +28,9 @@ class TeacherController extends Controller
     public function store(Request $request)
     {
         $teacher = new Teacher();
-        $teacher->name = $request->name;
-        $teacher->phonenumber = $request->phonennumber;
-        $teacher->email = $request->email;       
+        $teacher->name = $request->get('name');
+        $teacher->phonenumber = $request->get('phonenumber');  
+        $teacher->email = $request->get('email'); 
 
         
         if ($request->hasFile('image')) {
@@ -38,9 +38,9 @@ class TeacherController extends Controller
             $teacher->image = env('APP_URL').str_replace('public/', '/upload/', $teacher->image);
         }
         
-        $teacher->name = $request->name;
-        $teacher->phonenumber = $request->phonennumber;
-        $teacher->email = $request->email;       
+        $teacher->name = $request->get('name');
+        $teacher->phonenumber = $request->get('phonenumber');  
+        $teacher->email = $request->get('email');      
         $teacher->save();
         return redirect('/teachers');
     }
@@ -83,9 +83,9 @@ class TeacherController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $name)
     {
-        $teacher = Teacher::find($id);
+        $teacher = Teacher::find($name);
         $teacher->delete();
         return redirect('/teachers');
     }

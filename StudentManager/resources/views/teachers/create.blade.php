@@ -33,7 +33,7 @@
             <input class="form-control" type="text" placeholder="Input Phone" name="phonenumber" id="phonenumber">
         </div>
         <div class="form-group">
-            <label for="email">Emaail</label>
+            <label for="email">Email</label>
             <input class="form-control" placeholder="Input Email" name="email" id="email" >
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
