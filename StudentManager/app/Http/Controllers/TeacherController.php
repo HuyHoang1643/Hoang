@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Teacher;
 use Illuminate\Http\Request;
 
 class TeacherController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    
     public function index()
     {
-        //
+        $teachers = Teacher::all();
+        return view('teacher.index', ['teachers' => $teachers]);
     }
 
     /**
@@ -19,7 +19,7 @@ class TeacherController extends Controller
      */
     public function create()
     {
-        //
+         return view('teachers.create');
     }
 
     /**
@@ -27,7 +27,22 @@ class TeacherController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $teacher = new Teacher();
+        $teacher->name = $request->name;
+        $teacher->phonenumber = $request->phonennumber;
+        $teacher->email = $request->email;       
+
+        
+        if ($request->hasFile('image')) {
+            $teacher->image = $request->file('image')->store('public/images');
+            $teacher->image = env('APP_URL').str_replace('public/', '/upload/', $teacher->image);
+        }
+        
+        $teacher->name = $request->name;
+        $teacher->phonenumber = $request->phonennumber;
+        $teacher->email = $request->email;       
+        $teacher->save();
+        return redirect('/teachers');
     }
 
     /**
@@ -35,7 +50,8 @@ class TeacherController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $teacher = Teacher::find($id);
+        return view('teacher.show', ['teacher' => $teacher]);
     }
 
     /**
@@ -49,9 +65,19 @@ class TeacherController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $name)
     {
-        //
+        $teacher = Teacher::find($name);
+        $teacher->phonenumber = $request->phonenumber;
+        $teacher->email = $request->email;  
+        if ($request->hasFile('image')) {
+            $teacher->image = $request->file('image')->store('public/images');
+        }
+        $teacher->name = $request->name;
+        $teacher->phonenumber = $request->phonenumber;
+        $teacher->email = $request->email;    
+        $teacher->save();
+        return redirect('/teachers');
     }
 
     /**
@@ -59,6 +85,8 @@ class TeacherController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $teacher = Teacher::find($id);
+        $teacher->delete();
+        return redirect('/teachers');
     }
 }
