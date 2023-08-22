@@ -20,7 +20,8 @@
   <main>
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title">{{$teacher->name}}</h4>
+            <td><img src="/uploads/teachers/{{ $teacher->image }}" alt="" width='100' height='100'></td>
+            <h4 class="card-text">{{$teacher->name}}</h4>
             <p class="card-text">{{$teacher->email}}</p>
             <p class="card-text">{{$teacher->phonennumber}}</p>
         </div>

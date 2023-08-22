@@ -22,8 +22,9 @@ class CourseController extends Controller
      */
     public function create()
     {
+        $course = Course::all();
         $departments = Department::all();
-        return view('courses.create',['department' => $departments]);
+        return view('courses.create',['course' => $course,'department' => $departments]);
     }
 
     /**
@@ -45,7 +46,8 @@ class CourseController extends Controller
     public function show(string $id)
     {
         $course = Course::find($id);
-        return view('courses.show', ['course' => $course]);
+        $departments = Department::all();
+        return view('courses.show', ['course' => $course, 'department' => $departments]);
     }
 
     /**
@@ -75,8 +77,8 @@ class CourseController extends Controller
      */
     public function destroy(string $id)
     {
-        $course = Course::find($id);
-        $course->delete();
+        $courses = Course::find($id);
+        $courses->delete();
         return redirect('courses');
     }
 }
