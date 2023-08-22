@@ -140,5 +140,11 @@ a{
     text-decoration: none;
     color: black;
 }
+.card-detail{
+    display: flex;
+}
+.detail-right{
+Padding-left: 20px;
+}
 
 

@@ -16,8 +16,10 @@
     <!-- Header -->
   <header class="header">
     <div class="header-left">
-    <input class="input" type="type" placeholder="Search..." />
+      <form action="/students">
+    <input class="input" name="key" type="type" placeholder="Search..." />
         <button><i class="fas fa-search"></i></button> 
+        </form>
     </div> 
     <div class="header-right">
     <i class="fas fa-bell"></i>
@@ -36,7 +38,7 @@
 <a href="{{ asset('/students') }}"><li class="sidebar-list-item">Student management</li></a>
 <a href=""><li class="sidebar-list-item">Teacher management</li></a>
 <a href="{{ asset('/courses') }}"><li class="sidebar-list-item">Course management</li></a>
-<a href=""><li class="sidebar-list-item">Grade management</li></a>
+<a href="{{ asset('/grades') }}"><li class="sidebar-list-item">Grade management</li></a>
 <a href="{{ asset('/departments') }}"><li class="sidebar-list-item">Department management</li></a>
  </ul>
  </aside>

@@ -35,6 +35,7 @@
                 @endforeach
             </td>
             <td>
+            <a href="/students/{{$student->id }}" class="btn btn-info">Show</a>
                 <a href="/students/{{ $student->id }}/edit" class="btn btn-primary" >Edit</a>
                 <form action="/students/{{ $student->id }}" method="post" style="display: inline-block">
                     @method('DELETE')
