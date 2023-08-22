@@ -18,17 +18,17 @@
     <!-- place navbar here -->
   </header>
   <main>
-    <form action="/teachers/{{$teacher->id}}" method="post">
+    <form action="/courses/{{$course->id}}" method="post">
         @csrf
         @method('PUT')
         <div class="form-group">
         <div class="form-group">
             <label for="id">id</label>
-            <input class="form-control" type="text" placeholder="Input ID" name="id" id="id">
+            <input class="form-control" type="text" placeholder="Input ID" name="id" value="{{$course->id}}">
         </div>
         <div class="form-group">
             <label for="email">Name</label>
-            <input class="form-control" type="text" placeholder="Input Name Course" name="name" id="name">
+            <input class="form-control" type="text" placeholder="Input Name Course" name="name" value="{{$course->name}}">
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>

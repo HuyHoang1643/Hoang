@@ -53,7 +53,7 @@ class TeacherController extends Controller
     public function show(string $id)
     {
         $teacher = Teacher::find($id);
-        return view('teacher.show', ['teacher' => $teacher]);
+        return view('teachers.show', ['teacher' => $teacher]);
     }
 
     /**
@@ -63,7 +63,7 @@ class TeacherController extends Controller
     {
         $teacher = Teacher::find($name);
         $courses = Course::all();
-        return view('teacher.edit', ['teacher'=> $teacher, 'courses' => $courses]);
+        return view('teachers.edit', ['teacher'=> $teacher, 'courses' => $courses]);
     }
 
     /**
@@ -79,6 +79,7 @@ class TeacherController extends Controller
         $teacher->phonenumber = $request->get('phonenumber');  
         $teacher->email = $request->get('email');    
         $teacher->courses()->sync($request->courses);
+        $teacher->course_id = $request->course_id;
         $teacher->save();
         return redirect('/teachers');
     }

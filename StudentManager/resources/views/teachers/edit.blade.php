@@ -1,3 +1,6 @@
+
+@section('title','Edit Teacher')
+@section('main')
 <!doctype html>
 <html lang="en">
 
@@ -24,20 +27,26 @@
         <div class="form-group">
         <div class="form-group">
             <label for="image">Image</label>
-            <input class="form-control" type="file" placeholder="Input Image" name="image" id="image">
+            <input class="form-control" type="file" placeholder="Input Image" name="image" value="{{$teacher->Image}}">
         </div>
         <div class="form-group">
             <label for="email">Name</label>
-            <input class="form-control" type="text" placeholder="Input Name" name="name" id="name">
+            <input class="form-control" type="text" placeholder="Input Name" name="name" value="{{$teacher->name}}">
         </div>
         <div class="form-group">
             <label for="phonenumber">Phone</label>
-            <input class="form-control" type="text" placeholder="Input Phone" name="phonenumber" id="phonenumber">
+            <input class="form-control" type="text" placeholder="Input Phone" name="phonenumber" value="{{$teacher->phonenumber}}">
         </div>
         <div class="form-group">
             <label for="email">Email</label>
-            <input class="form-control" placeholder="Input Email" name="email" id="email" >
+            <input class="form-control" placeholder="Input Email" name="email" value="{{$teacher->email}}" >
         </div>
+        <label for="courses">Courses</label>
+    <select class="form-select">name="courses[]" id="courses" multiple>
+        @foreach($courses as $course)
+            <option value="{{$course->id}}">{{$course->name}}</option>
+        @endforeach
+    </select>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
   </main>
