@@ -1,13 +1,13 @@
 @extends('Layout.master')
 @section('title','courses')
 @section('main')
-<div class="content" style = "padding-top:20px">
+<div class="content">
 <div class="table-responsive">
 <a class="btn btn-success" href="{{ route('courses.create') }}"> Create New Course</a>
   <table class="table table-primary">
       <thead>
           <tr>
-              <th>ID</th>
+              <th>Id</th>
               <th>Name</th>
               <th>Action</th>
           </tr>

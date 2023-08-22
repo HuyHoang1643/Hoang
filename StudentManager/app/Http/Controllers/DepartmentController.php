@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Department;
 use Illuminate\Http\Request;
 
 class DepartmentController extends Controller
@@ -11,7 +11,8 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        //
+        $departments=Department::all();
+        return view('Department.index',['departments'=>$departments]);
     }
 
     /**
@@ -19,7 +20,7 @@ class DepartmentController extends Controller
      */
     public function create()
     {
-        //
+        return view('Department.create');
     }
 
     /**
@@ -27,7 +28,10 @@ class DepartmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $department = new Department();
+        $department->name = $request->name;
+        $department->save();
+        return redirect('/departments');
     }
 
     /**
@@ -35,7 +39,8 @@ class DepartmentController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $department = Department::find($id);
+        return view('Department.show', ['department' => $department]);
     }
 
     /**
@@ -43,7 +48,8 @@ class DepartmentController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $department = Department::find($id);
+        return view('Department.edit', ['department' => $department]);
     }
 
     /**
@@ -51,7 +57,10 @@ class DepartmentController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $department = Department::find($id);
+        $department->name = $request->name;
+        $department->save();
+        return redirect('/departments');
     }
 
     /**
@@ -59,6 +68,8 @@ class DepartmentController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $department = Department::find($id);
+        $department->delete();
+        return redirect('/departments');
     }
 }

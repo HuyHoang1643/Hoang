@@ -30,10 +30,12 @@
             <label for="email">Name</label>
             <input class="form-control" type="text" placeholder="Input Course Name" name="name" id="name">
         </div>
-        <div class="form-group">
-            <label for="department_id">Department ID</label>
-            <input class="form-control" type="text" placeholder="Input Department ID" name="department_id" id="department_id">
-        </div>
+        <label for="department_id">Department</label>
+    <select name="department_id" id="department_id">
+        @foreach($department as $department)
+            <option value="{{$department->id}}">{{$department->name}}</option>
+        @endforeach
+    </select>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
   </main>

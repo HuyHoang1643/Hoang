@@ -74,11 +74,9 @@ ul.sidebar-list a{
 }
 .main{
     min-height: 100%;
-    padding: 6rem 1rem 2rem 14rem;
     color: #201f20;
 }
 .dashboard-container{
-    padding: 25px;
     display:grid;
     grid-template-columns: 1fr 1fr 1fr 0.5fr 0.5fr;
     grid-template-rows: auto;
@@ -125,6 +123,22 @@ ul.sidebar-list a{
 .info-image{
     font-size: 40px;
     color:#21232d;
+}
+.main-content{
+    padding: 20px;
+}
+table{
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+.pull-right{
+padding-bottom: 10px;
+display: flex;
+float: right;
+}
+a{
+    text-decoration: none;
+    color: black;
 }
 
 

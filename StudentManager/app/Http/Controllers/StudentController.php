@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Student;
+use App\Models\Department;
+use App\Models\Course;
 class StudentController extends Controller
 {
     /**
@@ -11,7 +13,8 @@ class StudentController extends Controller
      */
     public function index()
     {
-        //
+        $students=Student::all();
+       return view('Student.index',['students'=>$students]);
     }
 
     /**
@@ -19,7 +22,9 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //
+        $departments = Department::all();
+        $courses = Course::all();
+        return view('Student.create', ['department' => $departments,'course' => $courses]);
     }
 
     /**
@@ -27,7 +32,22 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $student = new student();
+        $student->studentcode = $request->studentcode;
+        $student->name = $request->name;
+        $student->Email = $request->email;
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $image_name = time().$image->getClientOriginalExtension();
+            $destinationPath = public_path('/uploads/students');
+            $image->move($destinationPath, $image_name);
+        }
+        $student->image = $image_name;
+        $student->phonenumber = $request->phonenumber;
+        $student->department_id = $request->department_id;
+        $student->save();
+        $student->courses()->attach($request->courses);
+        return redirect('/students');
     }
 
     /**
@@ -35,7 +55,9 @@ class StudentController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $student=Student::find($id);
+        return view('Student.edit',['student'=>$student]);
+
     }
 
     /**
@@ -43,7 +65,10 @@ class StudentController extends Controller
      */
     public function edit(string $id)
     {
-        //
+       $student=Student::find($id);
+       $department = Department::all();
+       $courses = Course::all();
+       return view('Student.edit',['student'=>$student, 'department'=>$department],['courses' => $courses]);
     }
 
     /**
@@ -51,7 +76,22 @@ class StudentController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $student=Student::find($id);
+        $student->studentcode = $request->studentcode;
+        $student->name = $request->name;
+        $student->Email = $request->email;
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $image_name = time().$image->getClientOriginalExtension();
+            $destinationPath = public_path('/uploads/students');
+            $image->move($destinationPath, $image_name);
+        }
+        $student->image = $image_name;
+        $student->phonenumber = $request->phonenumber;
+        $student->department_id = $request->department_id;
+        $student->courses()->sync($request->courses);
+        $student->save();
+        return redirect('/students');
     }
 
     /**
@@ -59,6 +99,8 @@ class StudentController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $student = Student::find($id);
+        $student->delete();
+        return redirect('/students');
     }
 }

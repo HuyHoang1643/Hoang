@@ -8,7 +8,7 @@
   <!-- Bootstrap CSS v5.2.1 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    <link href="css/style.css" rel="stylesheet" type="text/css" media="all">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css')}}" >
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 </head>
 <body>
@@ -32,21 +32,22 @@
     <p>Student Manager</p>
  </div>
  <ul class="sidebar-list">
- <a href=""><li class="sidebar-list-item">Dashboard</li></a>
-<a href=""><li class="sidebar-list-item">Student management</li></a>
+ <a href="{{ asset('/dashboard') }}"><li class="sidebar-list-item">Dashboard</li></a>
+<a href="{{ asset('/students') }}"><li class="sidebar-list-item">Student management</li></a>
 <a href=""><li class="sidebar-list-item">Teacher management</li></a>
-<a href=""><li class="sidebar-list-item">Course management</li></a>
+<a href="{{ asset('/courses') }}"><li class="sidebar-list-item">Course management</li></a>
 <a href=""><li class="sidebar-list-item">Grade management</li></a>
-<a href=""><li class="sidebar-list-item">Department management</li></a>
+<a href="{{ asset('/departments') }}"><li class="sidebar-list-item">Department management</li></a>
  </ul>
  </aside>
  <!-- End Sidebar -->
  <!-- Main -->
- <main>
- @yield('main')
- </main>
- <!-- End Main -->
-  </div>
+ <div class="main-content">
+    <main>
+   @yield('main')
+   </main>
+   <!-- End Main -->
+</div>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
     integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
   </script>

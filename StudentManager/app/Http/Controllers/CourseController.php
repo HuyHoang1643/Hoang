@@ -22,8 +22,8 @@ class CourseController extends Controller
      */
     public function create()
     {
-        return view('courses.create');
         $departments = Department::all();
+        return view('courses.create',['department' => $departments]);
     }
 
     /**
