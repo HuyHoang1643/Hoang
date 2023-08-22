@@ -1,6 +1,7 @@
+@section('title', 'Teacher Create')
+@section('main')
 <!doctype html>
 <html lang="en">
-
 <head>
   <title>New Teacher</title>
   <!-- Required meta tags -->
@@ -18,7 +19,7 @@
     <!-- place navbar here -->
   </header>
   <main>
-    <form action="/teachers" method="post">
+    <form action="/teachers" method="post" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
             <label for="image">Image</label>
@@ -36,6 +37,12 @@
             <label for="email">Email</label>
             <input class="form-control" placeholder="Input Email" name="email" id="email" >
         </div>
+        <label for="courses">Courses</label>
+    <select class="form-select">name="courses[]" id="courses" multiple>
+        @foreach($courses as $course)
+            <option value="{{$course->id}}">{{$course->name}}</option>
+        @endforeach
+    </select>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
   </main>

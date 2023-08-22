@@ -31,11 +31,11 @@
             <input class="form-control" type="text" placeholder="Input Name" name="name" id="name">
         </div>
         <div class="form-group">
-            <label for="phone">Phone</label>
-            <input class="form-control" type="text" placeholder="Input Phone" name="phone" id="phone">
+            <label for="phonenumber">Phone</label>
+            <input class="form-control" type="text" placeholder="Input Phone" name="phonenumber" id="phonenumber">
         </div>
         <div class="form-group">
-            <label for="email">Emaail</label>
+            <label for="email">Email</label>
             <input class="form-control" placeholder="Input Email" name="email" id="email" >
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>

@@ -1,13 +1,16 @@
-@extends('layouts.master')
-@section('title','Teacher Index')
+@extends('Layout.master')
+@section('title','teachers')
 @section('main')
+<div class="content" style = "padding-top:20px">
+
 <div class="table-responsive">
+<a class="btn btn-success" href="{{ route('teachers.create') }}"> Create New Teacher</a>
   <table class="table table-primary">
       <thead>
           <tr>
+              <th>Image</th>
               <th>Name</th>
-              <th>Email</th>
-              <th>Phone</th>
+              <th>Phonenumber</th>
               <th>Email</th>
               <th>Action</th>
           </tr>
@@ -15,8 +18,9 @@
       <tbody>
           @foreach($teachers as $teacher)
           <tr>
+            <td><img src="/uploads/teachers/{{ $teacher->image }}" alt="" width='50' height='50'></td>
               <td>{{ $teacher->name }}</td>
-              <td>{{ $teacher->phone }}</td>
+              <td>{{ $teacher->phonenumber }}</td>
               <td>{{ $teacher->email }}</td>
               <td>
                   <a href="/teachers/{{$teacher->id}}" class="btn btn-info">Show</a>
@@ -31,5 +35,6 @@
           @endforeach
       </tbody>
   </table>
+</div>
 </div>
 @endsection

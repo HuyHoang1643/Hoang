@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
 
@@ -19,7 +20,8 @@ class TeacherController extends Controller
      */
     public function create()
     {
-         return view('teachers.create');
+         $courses = Course::all();
+         return view('teachers.create', ['courses' => $courses]);
     }
 
     /**
@@ -28,19 +30,19 @@ class TeacherController extends Controller
     public function store(Request $request)
     {
         $teacher = new Teacher();
-        $teacher->name = $request->get('name');
-        $teacher->phonenumber = $request->get('phonenumber');  
-        $teacher->email = $request->get('email'); 
+        if($request->hasFile('image'))
+    {
+        $image = $request->file('image');
+        $image_name = time().$image->getClientOriginalExtension();
+        $destinationPath = public_path('/uploads/teachers');
+        $image->move($destinationPath, $image_name);
+    }
 
-        
-        if ($request->hasFile('image')) {
-            $teacher->image = $request->file('image')->store('public/images');
-            $teacher->image = env('APP_URL').str_replace('public/', '/upload/', $teacher->image);
-        }
-        
+        $teacher->image = $image_name;
         $teacher->name = $request->get('name');
         $teacher->phonenumber = $request->get('phonenumber');  
-        $teacher->email = $request->get('email');      
+        $teacher->email = $request->get('email');     
+        $teacher->courses()->attach($request->courses);
         $teacher->save();
         return redirect('/teachers');
     }
@@ -57,9 +59,11 @@ class TeacherController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $name)
     {
-        //
+        $teacher = Teacher::find($name);
+        $courses = Course::all();
+        return view('teacher.edit', ['teacher'=> $teacher, 'courses' => $courses]);
     }
 
     /**
@@ -68,14 +72,13 @@ class TeacherController extends Controller
     public function update(Request $request, string $name)
     {
         $teacher = Teacher::find($name);
-        $teacher->phonenumber = $request->phonenumber;
-        $teacher->email = $request->email;  
         if ($request->hasFile('image')) {
             $teacher->image = $request->file('image')->store('public/images');
         }
-        $teacher->name = $request->name;
-        $teacher->phonenumber = $request->phonenumber;
-        $teacher->email = $request->email;    
+        $teacher->name = $request->get('name');
+        $teacher->phonenumber = $request->get('phonenumber');  
+        $teacher->email = $request->get('email');    
+        $teacher->courses()->sync($request->courses);
         $teacher->save();
         return redirect('/teachers');
     }

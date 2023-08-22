@@ -1,7 +1,9 @@
-@extends('layouts.master')
-@section('title','Course Index')
+@extends('Layout.master')
+@section('title','courses')
 @section('main')
+<div class="content" style = "padding-top:20px">
 <div class="table-responsive">
+<a class="btn btn-success" href="{{ route('courses.create') }}"> Create New Course</a>
   <table class="table table-primary">
       <thead>
           <tr>
@@ -28,5 +30,6 @@
           @endforeach
       </tbody>
   </table>
+</div>
 </div>
 @endsection

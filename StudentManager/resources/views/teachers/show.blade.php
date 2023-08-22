@@ -21,8 +21,8 @@
     <div class="card">
         <div class="card-body">
             <h4 class="card-title">{{$teacher->name}}</h4>
-            <p class="card-text">{{$teacher->phonennumber}}</p>
             <p class="card-text">{{$teacher->email}}</p>
+            <p class="card-text">{{$teacher->phonennumber}}</p>
         </div>
     </div>
   </main>

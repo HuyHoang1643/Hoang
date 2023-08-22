@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\Department;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
@@ -13,7 +14,7 @@ class CourseController extends Controller
     public function index()
     {
         $courses = Course::all();
-        return view('course.index', ['courses' => $courses]);
+        return view('courses.index', ['courses' => $courses]);
     }
 
     /**
@@ -22,6 +23,7 @@ class CourseController extends Controller
     public function create()
     {
         return view('courses.create');
+        $departments = Department::all();
     }
 
     /**
@@ -29,11 +31,10 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        if (strlen($request->get('name'))==0)
-        return redirect('courses')->with('error', 'Name is required');
         $course = new Course();
-        $course->name = $request->get('id');
-        $course->name = $request->get('name');
+        $course->id = $request->get('id');
+        $course->name = $request->get('name'); 
+        $course->department_id= $request->department_id;       
         $course->save();
         return redirect('courses')->with('success', 'successfully added');
     }
