@@ -41,8 +41,8 @@
             <label for="email">Email</label>
             <input class="form-control" placeholder="Input Email" name="email" value="{{$teacher->email}}" >
         </div>
-        <label for="courses">Courses</label>
-        <select   class="form-select" multiple aria-label="multiple select example" name="courses[]" id="courses" class="select" >
+        <label class="form-label" for="courses">Courses</label>
+    <select   class="form-select" multiple aria-label="multiple select example" name="courses[]" id="courses" class="select" >
         @foreach($courses as $course)
             <option value="{{$course->id}}" @if(in_array($course->id, $teacher->courses->pluck('id')->toArray())) selected @endif>{{$course->name}}</option>
         @endforeach
