@@ -37,10 +37,12 @@
             <label for="email">Email</label>
             <input class="form-control" placeholder="Input Email" name="email" id="email" >
         </div>
-        <label for="courses">Courses</label>
-    <select class="form-select">name="courses[]" id="courses" multiple>
+        <label  class="form-label" for="courses">Courses</label>
+    <select  class="form-select" multiple name="courses[]" id="courses">
         @foreach($courses as $course)
-            <option value="{{$course->id}}">{{$course->name}}</option>
+            <option value="{{$course->id}}">
+              {{$course->name}}
+            </option>
         @endforeach
     </select>
         <button type="submit" class="btn btn-primary">Submit</button>

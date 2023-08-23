@@ -27,7 +27,7 @@
         <div class="form-group">
         <div class="form-group">
             <label for="image">Image</label>
-            <input class="form-control" type="file" placeholder="Input Image" name="image" value="{{$teacher->Image}}">
+            <input class="form-control" type="file" placeholder="Input Image" name="image" value="{{$teacher->image}}">
         </div>
         <div class="form-group">
             <label for="email">Name</label>
@@ -42,9 +42,9 @@
             <input class="form-control" placeholder="Input Email" name="email" value="{{$teacher->email}}" >
         </div>
         <label for="courses">Courses</label>
-    <select class="form-select">name="courses[]" id="courses" multiple>
+        <select   class="form-select" multiple aria-label="multiple select example" name="courses[]" id="courses" class="select" >
         @foreach($courses as $course)
-            <option value="{{$course->id}}">{{$course->name}}</option>
+            <option value="{{$course->id}}" @if(in_array($course->id, $teacher->courses->pluck('id')->toArray())) selected @endif>{{$course->name}}</option>
         @endforeach
     </select>
         <button type="submit" class="btn btn-primary">Submit</button>

@@ -36,7 +36,7 @@
  <ul class="sidebar-list">
  <a href="{{ asset('/dashboard') }}"><li class="sidebar-list-item">Dashboard</li></a>
 <a href="{{ asset('/students') }}"><li class="sidebar-list-item">Student management</li></a>
-<a href=""><li class="sidebar-list-item">Teacher management</li></a>
+<a href="{{ asset('/teachers') }}"><li class="sidebar-list-item">Teacher management</li></a>
 <a href="{{ asset('/courses') }}"><li class="sidebar-list-item">Course management</li></a>
 <a href="{{ asset('/grades') }}"><li class="sidebar-list-item">Grade management</li></a>
 <a href="{{ asset('/departments') }}"><li class="sidebar-list-item">Department management</li></a>

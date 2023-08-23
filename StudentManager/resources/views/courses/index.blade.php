@@ -9,6 +9,7 @@
           <tr>
               <th>Id</th>
               <th>Name</th>
+              <th>Department</th>
               <th>Action</th>
           </tr>
       </thead>
@@ -17,6 +18,7 @@
           <tr>
               <td>{{ $course->id }}</td>
               <td>{{ $course->name }}</td>
+              <td>{{$course->department->name}}</td>
               <td>                  
                   <a href="/courses/{{$course->id}}/edit" class="btn btn-primary">Edit</a>
                   <form action="/courses/{{$course->id}}" method="POST">

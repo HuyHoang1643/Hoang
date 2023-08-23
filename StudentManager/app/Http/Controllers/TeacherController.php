@@ -42,8 +42,8 @@ class TeacherController extends Controller
         $teacher->name = $request->get('name');
         $teacher->phonenumber = $request->get('phonenumber');  
         $teacher->email = $request->get('email');     
-        $teacher->courses()->attach($request->courses);
         $teacher->save();
+        $teacher->courses()->attach($request->courses);
         return redirect('/teachers');
     }
 
@@ -79,7 +79,6 @@ class TeacherController extends Controller
         $teacher->phonenumber = $request->get('phonenumber');  
         $teacher->email = $request->get('email');    
         $teacher->courses()->sync($request->courses);
-        $teacher->course_id = $request->course_id;
         $teacher->save();
         return redirect('/teachers');
     }

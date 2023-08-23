@@ -12,6 +12,7 @@
               <th>Name</th>
               <th>Phonenumber</th>
               <th>Email</th>
+              <th>Course</th>
               <th>Action</th>
           </tr>
       </thead>
@@ -22,6 +23,11 @@
               <td>{{ $teacher->name }}</td>
               <td>{{ $teacher->phonenumber }}</td>
               <td>{{ $teacher->email }}</td>
+              <td >
+                @foreach($teacher->courses as $course)
+                    <a href="/teachers/{{$course->id}}">{{ $course->name}}</a>
+                @endforeach
+            </td>
               <td>
                   <a href="/teachers/{{$teacher->id}}" class="btn btn-info">Show</a>
                   <a href="/teachers/{{$teacher->id}}/edit" class="btn btn-primary">Edit</a>
