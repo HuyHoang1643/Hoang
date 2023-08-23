@@ -1,43 +1,18 @@
-<!doctype html>
-<html lang="en">
-
-<head>
-  <title>Detail of {{$teacher->name}}</title>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <!-- Bootstrap CSS v5.2.1 -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-
-</head>
-
-<body>
-  <header>
-    <!-- place navbar here -->
-  </header>
-  <main>
-    <div class="card">
-        <div class="card-body">
-            <td><img src="/uploads/teachers/{{ $teacher->image }}" alt="" width='100' height='100'></td>
-            <h4 class="card-text">{{$teacher->name}}</h4>
-            <p class="card-text">{{$teacher->email}}</p>
-            <p class="card-text">{{$teacher->phonennumber}}</p>
-        </div>
+@extends('Layout.master')
+@section('title', 'teacher')
+@section('main')
+<div class="card">
+<h1 class="card-title">teacher Detail</h1>
+    <div class="card-detail">
+  <img style="width: 30rem;" class="card-img-top" src="/uploads/teachers/{{ $teacher->image }}" alt="Card image cap">
+  <div class="detail-right">
+    <h3>Name: {{ $teacher->name }}</h3>
+    <p>Phone Number: {{ $teacher->phonenumber}}</p>
+    <p>Email: {{ $teacher->email }}</p>
+    <p>Course: {{ $teacher->course }}</p>
+    <a href="/teachers"><button type="button" class="btn btn-dark">Back</button></a>
     </div>
-  </main>
-  <footer>
-    <!-- place footer here -->
-  </footer>
-  <!-- Bootstrap JavaScript Libraries -->
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
-  </script>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
-    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
-  </script>
-</body>
-
-</html>
+  </div>
+  </div>
+</div>
+@stop
