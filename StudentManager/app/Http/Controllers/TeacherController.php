@@ -92,4 +92,9 @@ class TeacherController extends Controller
         $teacher->delete();
         return redirect('/teachers');
     }
+    public function search(){
+        $search=$_GET['key'];
+        $teachers=Teacher::where('name','LIKE','%'.$search.'%')->get();
+        return view('teachers.search',['teachers'=>$teachers]);
+    }
 }

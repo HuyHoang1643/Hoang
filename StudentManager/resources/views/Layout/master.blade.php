@@ -25,7 +25,7 @@
     <!-- Header -->
   <header class="header">
     <div class="header-left">
-      <form action="/students">
+      <form action="{{url('/search')}}"  type="get">
     <input class="input" name="key" type="type" placeholder="Search..." />
         <button><i class="fas fa-search"></i></button> 
         </form>

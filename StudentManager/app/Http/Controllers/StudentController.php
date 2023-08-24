@@ -103,4 +103,9 @@ class StudentController extends Controller
         $student->delete();
         return redirect('/students');
     }
+    public function search(){
+        $search=$_GET['key'];
+        $students=Student::where('name','LIKE','%'.$search.'%')->get();
+        return view('Student.search',['students'=>$students]);
+    }
 }

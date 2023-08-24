@@ -30,6 +30,7 @@ Route::resource("courses",CourseController::class);
 Route::resource('/students', StudentController::class);
 Route::resource('/departments',DepartmentController::class);
 Route::resource('/grades',GradeController::class);
-Route::get('/search','StudentController@search');
+Route::get('/search',[StudentController::class, 'search']);
+Route::get('/search',[TeacherController::class, 'search']);
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
