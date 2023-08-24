@@ -23,10 +23,6 @@
     <form action="/courses" method="post">
         @csrf
         <div class="form-group">
-            <label for="id">ID</label>
-            <input class="form-control" type="text" placeholder="Input Id" name="id" id="id">
-        </div>
-        <div class="form-group">
             <label for="email">Name</label>
             <input class="form-control" type="text" placeholder="Input Course Name" name="name" id="name">
         </div>

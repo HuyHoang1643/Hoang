@@ -8,7 +8,7 @@
 <table class="table" style="text-decoration:none">
 <thead>
     <tr>
-      <th scope="col">ID</th>
+      <th scope="col">No</th>
       <th scope="col">Name</th>
       <th scope="col">Department</th>
       <th scope="col">Action</th>
@@ -17,7 +17,7 @@
   <tbody>
   @foreach($courses as $course)
         <tr>
-            <td>{{ $course->id }}</td>
+            <td>{{ $loop->iteration }}</td>
             <td>{{ $course->name }}</td>
             <td>{{$course->department->name}}</td>
             <td>
