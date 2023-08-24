@@ -22,13 +22,16 @@
         @csrf
         @method('PUT')
         <div class="form-group">
-        <div class="form-group">
-            <label for="id">id</label>
-            <input class="form-control" type="text" placeholder="Input ID" name="id" value="{{$course->id}}">
-        </div>
-        <div class="form-group">
             <label for="email">Name</label>
             <input class="form-control" type="text" placeholder="Input Name Course" name="name" value="{{$course->name}}">
+        </div>
+        <div>
+        <label class="form-label" for="department_id">Department</label>
+    <select class="form-select" name="department_id" id="department_id">
+        @foreach($department as $department)
+            <option value="{{$department->id}}"@if($department->id == $course->department_id) selected @endif>{{$department->name}}</option>
+        @endforeach
+    </select> 
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>

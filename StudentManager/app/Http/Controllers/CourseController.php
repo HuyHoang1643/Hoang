@@ -56,7 +56,8 @@ class CourseController extends Controller
     public function edit(string $id)
     {
         $course = Course::find($id);
-        return view('courses.edit', ['course' => $course]);
+        $departments = Department::all();
+        return view('courses.edit', ['course' => $course,'department' => $departments]);
 
     }
 
